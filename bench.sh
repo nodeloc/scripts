@@ -143,26 +143,28 @@ function main(){
 
     echo -ne "\e[1;33m是否进行IP质量测试(Y/n) default Y: \e[m"
     read ans
-    if [ -z "$ans" ] ; then
+    if [[ -z "$ans" ]]; then
         ans=y
     fi
-    if [ "$ans" == 'y' -o "$ans" == 'Y' ] ; then
+    if [[ "$ans" == 'y' ]] || [[ "$ans" == 'Y' ]]; then
         IPCheck
     fi
 
     echo -ne "\e[1;33m是否进行单线程测速(Y/n) default Y: \e[m"
     read ans
-    if [ -z "$ans" ] ; then
+    if [[ -z "$ans" ]]; then
         ans=y
     fi
-    if [ "$ans" == 'y' -o "$ans" == 'Y' ] ; then
+    if [[ "$ans" == 'y' ]] || [[ "$ans" == 'Y' ]]; then
         hyperspeed
     fi
+
     echo -ne "\e[1;33m是否补充测试bench.sh(y/N) default n: \e[m"
     read ans
-    if [ "$ans" == 'y' -o "$ans" == 'Y' ] ; then
+    if [[ "$ans" == 'y' ]] || [[ "$ans" == 'Y' ]]; then
         benchsh
     fi
+
 
     if [ -n "$(command -v wget)" ] ; then
         wget -qO- --post-file "$markdown_log_file" "$api_url" | cat
