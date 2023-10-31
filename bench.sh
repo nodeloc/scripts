@@ -140,7 +140,6 @@ function main(){
     yabs
     backtrace
     RegionRestrictionCheck
-    IPCheck
 
     echo -ne "\e[1;33m是否进行IP质量测试(Y/n) default Y: \e[m"
     read ans
