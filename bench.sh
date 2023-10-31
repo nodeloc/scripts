@@ -119,7 +119,7 @@ function RegionRestrictionCheck(){
 }
 
 function IPCheck(){
-    num=0 bash <(fetch https://raw.githubusercontent.com/spiritLHLS/ecs/main/qzcheck.sh | \
+    fetch https://raw.githubusercontent.com/spiritLHLS/ecs/main/qzcheck.sh | \
         bash  2>&1 | print_markdown_block IP质量测试
 }
 
