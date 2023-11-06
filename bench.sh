@@ -3,7 +3,7 @@
 # constant
 date_time_str="$(TZ="UST-8" date +%Y-%m-%d_%H-%M-%S)"
 markdown_log_file="BenchResult_${date_time_str}.md"
-api_url="https://sh.vvpp.cc/api/bench/"
+api_url="https://bench.nodeloc.com/up2.php"
 
 function green_color(){
     echo -ne "\e[1;32m"
@@ -166,10 +166,10 @@ function main(){
     fi
 
 
-    if [ -n "$(command -v wget)" ] ; then
-        wget -qO- --post-file "$markdown_log_file" "$api_url" | cat
+if [ -n "$(command -v wget)" ] ; then
+        wget -qO- --post-file "$markdown_log_file" --header="Content-Disposition: attachment; filename=\"$markdown_log_file\"" $api_url | cat
     else
-        curl -s --data-binary @"$markdown_log_file" "$api_url"
+        curl -X POST --header "Content-Disposition: attachment; filename=\"$markdown_log_file\"" --data-binary @"$markdown_log_file" $api_url?filename=$markdown_log_file
     fi
     echo
 }
